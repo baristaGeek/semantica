@@ -2,12 +2,32 @@
 
 import React, { useState } from 'react'
 
-export default function Home() {
+import type Parser from 'web-tree-sitter'
+
+// const Parser = require('web-tree-sitter');
+
+
+export default async function Home() {
+  const ParserImpl = require('web-tree-sitter') as typeof Parser
+  // await Parser.init({
+  //   locateFile(scriptName: string, scriptDirectory: string) {
+  //     return scriptName;
+  //   },
+  // });
+
+  await ParserImpl.init()
 
   const [snippet, setSnippet] = useState("");
 
+  const parser = new ParserImpl();
+  const JavaScript = await ParserImpl.Language.load('tree-sitter-javascript.wasm');
+  parser.setLanguage(JavaScript);
+
   function parseCodeSemantics (snippet: string) {
     console.log("snippet to parse: ", snippet)
+
+    const tree = parser.parse(snippet);
+    console.log(tree.rootNode.toString());
   }
 
   return (
