@@ -20,6 +20,12 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "web-tree-sitter": "^0.20.8",
+    "tree-sitter-javascript": "^0.20.1"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8",
+    "tree-sitter-javascript": "^0.20.1"
   }
 }
