@@ -14,7 +14,7 @@ export default async function storeVectorizedAST(body: string, ast: string): Pro
   );
 
   // // Generate a vector using Transformers.js
-  const output = await generateEmbedding(body, {
+  const output = await generateEmbedding(ast, {
     pooling: "mean",
     normalize: true,
   });
