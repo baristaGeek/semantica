@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
-import React from "react"
-import Parser from "web-tree-sitter"
+import React from "react";
+import Parser from "web-tree-sitter";
+
+import storeVectorizedAST from "./storeVectorizedAST";
 
 const exampleCode = `
 const MyComp = () => {
@@ -14,47 +16,47 @@ const MyComp = () => {
     </div>
   )
 }
-`
+`;
 
 export default function TreeSitterTest() {
-  const [isReady, setIsReady] = React.useState(false)
-  const [code, setCode] = React.useState(exampleCode)
-  const [AST, setAST] = React.useState<Parser.Tree | null>(null)
+  const [isReady, setIsReady] = React.useState(false);
+  const [code, setCode] = React.useState(exampleCode);
+  const [AST, setAST] = React.useState<Parser.Tree | null>(null);
 
-  const parserRef = React.useRef<Parser>()
+  const parserRef = React.useRef<Parser>();
 
   React.useEffect(() => {
     if (typeof window === undefined) {
-      console.log("SSR")
-      return
+      console.log("SSR");
+      return;
     }
-    ;(async () => {
+    (async () => {
       await Parser.init({
         locateFile(scriptName: string, scriptDirectory: string) {
-          return scriptName
+          return scriptName;
         },
-      })
+      });
 
-      const parser = new Parser()
-      const Lang = await Parser.Language.load("tree-sitter-javascript.wasm")
+      const parser = new Parser();
+      const Lang = await Parser.Language.load("tree-sitter-javascript.wasm");
 
-      setIsReady(true)
+      setIsReady(true);
 
-      parser.setLanguage(Lang)
+      parser.setLanguage(Lang);
 
-      parserRef.current = parser
-    })()
-  }, [])
+      parserRef.current = parser;
+    })();
+  }, []);
 
   React.useEffect(() => {
-    if (!isReady) return
-    if (!parserRef.current) return
+    if (!isReady) return;
+    if (!parserRef.current) return;
 
-    const tree = parserRef.current.parse(code)
-    console.log("rootNode:", tree.rootNode)
+    const tree = parserRef.current.parse(code);
+    console.log("rootNode:", tree.rootNode);
 
-    setAST(tree)
-  }, [code, isReady])
+    setAST(tree);
+  }, [code, isReady]);
 
   return (
     <div>
@@ -70,6 +72,12 @@ export default function TreeSitterTest() {
           {AST?.rootNode.toString()}
         </div>
       </div>
+
+      <div className="flex justify-center">
+        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2">
+          Store Code Vector
+        </button>
+      </div>
     </div>
-  )
+  );
 }
