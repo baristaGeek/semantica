@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.38.1",
     "@types/node": "20.4.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.7",
+    "@xenova/transformers": "^2.6.2",
     "autoprefixer": "10.4.14",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
@@ -20,9 +22,9 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",
+    "tree-sitter-javascript": "^0.20.1",
     "typescript": "5.1.6",
-    "web-tree-sitter": "^0.20.8",
-    "tree-sitter-javascript": "^0.20.1"
+    "web-tree-sitter": "^0.20.8"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.8",
