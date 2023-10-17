@@ -69,12 +69,21 @@ export default function TreeSitterTest() {
           onChange={(e) => setCode(e.target.value)}
         />
         <div className="rounder-sm flex-1 overflow-auto whitespace-pre-wrap border border-gray-300 p-2">
-          {AST?.rootNode.toString()}
+          {AST?.rootNode?.toString()}
         </div>
       </div>
 
       <div className="flex justify-center">
-        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2">
+        <button
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+          onClick={() => {
+            if (AST?.rootNode) {
+              // storeVectorizedAST(code)
+              console.log("code to store: ", code, "ast to store: ", AST.rootNode.toString());
+              storeVectorizedAST(code, AST.rootNode.toString());
+            }
+          }}
+        >
           Store Code Vector
         </button>
       </div>
