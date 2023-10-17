@@ -3,7 +3,8 @@
 import React from "react";
 import Parser from "web-tree-sitter";
 
-import storeVectorizedAST from "./storeVectorizedAST";
+// import storeVectorizedAST from "./storeVectorizedAST";
+import storeVectorizedAST from "./clientStoreVectorizedAST";
 
 const exampleCode = `
 const MyComp = () => {
@@ -80,7 +81,7 @@ export default function TreeSitterTest() {
             if (AST?.rootNode) {
               // storeVectorizedAST(code)
               console.log("code to store: ", code, "ast to store: ", AST.rootNode.toString());
-              storeVectorizedAST(code, AST.rootNode.toString());
+              // storeVectorizedAST(code, AST.rootNode.toString());
             }
           }}
         >
