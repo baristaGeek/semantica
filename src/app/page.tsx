@@ -3,8 +3,8 @@
 import React from "react";
 import Parser from "web-tree-sitter";
 
-// import storeVectorizedAST from "./storeVectorizedAST";
 import storeVectorizedAST from "./clientStoreVectorizedAST";
+import searchVectorizedAST from "./searchVectorizedAST";
 
 const exampleCode = `
 const MyComp = () => {
