@@ -23,11 +23,24 @@ export default async function storeVectorizedAST(body: string, ast: string): Pro
   // Extract the embedding output
   const embedding = Array.from(output.data);
 
+  // Get the latest id from the database
+  const { data: latest } = await supabase
+  .from('posts')
+  .select('id')
+  .order('id', { ascending: false })
+  .limit(1)
+  .single();
+
+  // Generate next id
+  const nextId = latest ? latest.id + 1 : 1; 
+
   // Store the vector in Postgres
-  const { data, error } = await supabase.from("documents").insert({
+  const { data, error } = await supabase.from("posts").insert({
+    id: nextId,
     body,
     embedding,
   });
 
+  console.log("embedding to store: ", embedding);
   alert (`Vector stored!`);
 };
