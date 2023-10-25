@@ -6,6 +6,11 @@ module.exports = {
       fs: false,
     };
 
+    config.module.rules.push({
+      test: /\.node$/,
+      use: 'node-loader', 
+    });
+
     return config;
   },
 };
