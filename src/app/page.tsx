@@ -81,7 +81,7 @@ export default function TreeSitterTest() {
             if (AST?.rootNode) {
               // storeVectorizedAST(code)
               console.log("code to store: ", code, "ast to store: ", AST.rootNode.toString());
-              // storeVectorizedAST(code, AST.rootNode.toString());
+              storeVectorizedAST(code, AST.rootNode.toString());
             }
           }}
         >

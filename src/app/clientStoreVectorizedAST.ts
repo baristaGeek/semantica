@@ -1,4 +1,5 @@
-import { pipeline } from "@xenova/transformers";
+// import { pipeline } from "@xenova/transformers";
+import { pipeline } from '@xenova/transformers';
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
@@ -13,13 +14,13 @@ export default async function storeVectorizedAST(body: string, ast: string): Pro
     "Supabase/gte-small"
   );
 
-  // // Generate a vector using Transformers.js
+  // Generate a vector using Transformers.js
   const output = await generateEmbedding(ast, {
     pooling: "mean",
     normalize: true,
   });
 
-  // // Extract the embedding output
+  // Extract the embedding output
   const embedding = Array.from(output.data);
 
   // Store the vector in Postgres
@@ -27,4 +28,6 @@ export default async function storeVectorizedAST(body: string, ast: string): Pro
     body,
     embedding,
   });
+
+  alert (`Vector stored!`);
 };
