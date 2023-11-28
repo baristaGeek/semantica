@@ -105,7 +105,13 @@ export default function TreeSitterTest() {
                 "ast to searh: ",
                 AST.rootNode.toString()
               );
-              searchVectorizedAST(AST.rootNode.toString())
+              searchVectorizedAST(AST.rootNode.toString()).then((res) => {
+                // alert(`search result:  ${res.data[0].body}`);
+                // alert(res.data[0].body);
+                // console.log("result: ", res[0].content);
+                alert(res);
+              }
+              );
             }
           }}
         >
