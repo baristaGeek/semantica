@@ -1,7 +1,7 @@
 # Semantica: Semantic Code Search Using Vectorized Abstract Syntax Trees 
 Wouldn't it be cool to use vector DBs to search for semantically (not synactically) similar code in the public domain? 
 
-__For real?__ 
+___For real?___ 
 
 It's not a game changer or anything. This is just a fun experiment that I built to get familiarized with Tree-sitter and pgvector :) There's still a lot of room for improvement to achieve high accuracy.
 
