@@ -3,7 +3,7 @@ Wouldn't it be cool to use vector DBs to search for semantically (not synactical
 
 __For real?__ 
 
-It's not a game changer or anything. This is just a fun experiment that I built to get familiarized with Tree-sitter and pgvector :)
+It's not a game changer or anything. This is just a fun experiment that I built to get familiarized with Tree-sitter and pgvector :) There's still a lot of room for improvement to achieve high accuracy.
 
 ## Demo
 Semantica works with 2 very basic functionalities:
@@ -17,6 +17,8 @@ Behinds the scenes, Semantica:
 
 For example, you can add two numbers with the addition operator or by using an array and reducing it. They are syntactically different but semantically similar snippets that Semantica matches. 
 
+
+https://github.com/baristaGeek/semantica/assets/8325094/4c294845-3312-457d-a8dc-c0c6461fe139
 
 
 ## Material that was useful to build this 
