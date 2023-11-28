@@ -25,7 +25,7 @@ export default async function searchVectorizedAST(ast: string): Promise<{
 
   const { data: documents } = await supabase.rpc('match_documents', {
     query_embedding: embedding, // Pass the embedding you want to compare
-    match_threshold: 0.9, // Choose an appropriate threshold for your data
+    match_threshold: 0.90, // Choose an appropriate threshold for your data
     match_count: 10, // Choose the number of matches
   })
   
