@@ -23,12 +23,12 @@ export default function TreeSitterTest() {
   const [isReady, setIsReady] = React.useState(false);
   const [code, setCode] = React.useState(exampleCode);
   const [AST, setAST] = React.useState<Parser.Tree | null>(null);
+  const [searchResults, setSearchResults] = React.useState<any>([]);
 
   const parserRef = React.useRef<Parser>();
 
   React.useEffect(() => {
     if (typeof window === undefined) {
-      console.log("SSR");
       return;
     }
     (async () => {
@@ -54,16 +54,15 @@ export default function TreeSitterTest() {
     if (!parserRef.current) return;
 
     const tree = parserRef.current.parse(code);
-    console.log("rootNode:", tree.rootNode);
 
     setAST(tree);
   }, [code, isReady]);
 
   return (
     <div>
-      <h1 className="p-2 text-4xl">Tree Sitter Test</h1>
+      <h1 className="p-2 text-4xl">Semantica</h1>
 
-      <div className="flex-cole flex h-96 gap-1 p-1">
+      <div className="flex-cole flex h-64 gap-1 p-1">
         <textarea
           className="rounder-sm flex-1 overflow-auto whitespace-pre-wrap border border-gray-300 p-2"
           value={code}
@@ -76,16 +75,9 @@ export default function TreeSitterTest() {
 
       <div className="flex justify-center">
         <button
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+          className="bg-gradient-to-r from-purple-400 to-fuchsia-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2 drop-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.7)]"
           onClick={() => {
             if (AST?.rootNode) {
-              // storeVectorizedAST(code)
-              console.log(
-                "code to store: ",
-                code,
-                "ast to store: ",
-                AST.rootNode.toString()
-              );
               storeVectorizedAST(code, AST.rootNode.toString());
             }
           }}
@@ -95,22 +87,28 @@ export default function TreeSitterTest() {
       </div>
       <div className="flex justify-center">
         <button
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+          className="bg-gradient-to-r from-purple-400 to-fuchsia-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2 drop-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.7)]"
           onClick={() => {
             if (AST?.rootNode) {
-              // storeVectorizedAST(code)
-              console.log(
-                "code to search: ",
-                code,
-                "ast to searh: ",
-                AST.rootNode.toString()
-              );
-              searchVectorizedAST(AST.rootNode.toString())
+              searchVectorizedAST(AST.rootNode.toString()).then((res) => {
+                setSearchResults(res);
+              });
             }
           }}
         >
           Semantic Code Search
         </button>
+      </div>
+
+      <div>
+        {searchResults.length > 0 && (
+          <div className="bg-gray-100 p-4 rounded-md">
+            <h2 className="text-lg font-medium text-gray-800">
+              Most Similar Match
+            </h2>
+            <p className="text-gray-700">{searchResults}</p>
+          </div>
+        )}
       </div>
     </div>
   );

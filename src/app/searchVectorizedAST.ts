@@ -6,11 +6,13 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-export default async function searchVectorizedAST(ast: string): Promise<void> {
-  const generateEmbedding = await pipeline(
-    "feature-extraction",
-    "Supabase/gte-small"
-  );
+export default async function searchVectorizedAST(ast: string): Promise<{
+    data: any
+  }> {
+    const generateEmbedding = await pipeline(
+      "feature-extraction",
+      "Supabase/gte-small"
+    );
 
   // // Generate a vector using Transformers.js
   const output = await generateEmbedding(ast, {
@@ -26,8 +28,7 @@ export default async function searchVectorizedAST(ast: string): Promise<void> {
     match_threshold: 0.9, // Choose an appropriate threshold for your data
     match_count: 10, // Choose the number of matches
   })
-
-
-  console.log("closestMatch: ", documents);
+  
+  return documents[0].content;
   
 };
