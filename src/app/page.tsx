@@ -64,7 +64,7 @@ export default function TreeSitterTest() {
     <div>
       <h1 className="p-2 text-4xl">Semantica</h1>
 
-      <div className="flex-cole flex h-96 gap-1 p-1">
+      <div className="flex-cole flex h-64 gap-1 p-1">
         <textarea
           className="rounder-sm flex-1 overflow-auto whitespace-pre-wrap border border-gray-300 p-2"
           value={code}
@@ -107,7 +107,6 @@ export default function TreeSitterTest() {
                 AST.rootNode.toString()
               );
               searchVectorizedAST(AST.rootNode.toString()).then((res) => {
-                // alert(res);
                 setSearchResults(res);
               });
             }
