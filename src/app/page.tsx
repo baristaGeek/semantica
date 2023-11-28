@@ -29,7 +29,6 @@ export default function TreeSitterTest() {
 
   React.useEffect(() => {
     if (typeof window === undefined) {
-      console.log("SSR");
       return;
     }
     (async () => {
@@ -55,7 +54,6 @@ export default function TreeSitterTest() {
     if (!parserRef.current) return;
 
     const tree = parserRef.current.parse(code);
-    console.log("rootNode:", tree.rootNode);
 
     setAST(tree);
   }, [code, isReady]);
@@ -80,13 +78,6 @@ export default function TreeSitterTest() {
           className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
           onClick={() => {
             if (AST?.rootNode) {
-              // storeVectorizedAST(code)
-              console.log(
-                "code to store: ",
-                code,
-                "ast to store: ",
-                AST.rootNode.toString()
-              );
               storeVectorizedAST(code, AST.rootNode.toString());
             }
           }}
@@ -99,13 +90,6 @@ export default function TreeSitterTest() {
           className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
           onClick={() => {
             if (AST?.rootNode) {
-              // storeVectorizedAST(code)
-              console.log(
-                "code to search: ",
-                code,
-                "ast to searh: ",
-                AST.rootNode.toString()
-              );
               searchVectorizedAST(AST.rootNode.toString()).then((res) => {
                 setSearchResults(res);
               });

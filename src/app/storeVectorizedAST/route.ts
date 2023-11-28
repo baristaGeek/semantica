@@ -10,8 +10,6 @@ const supabase = createClient(
 )
 
 export default async function handler(req: any, res: any) {
-    console.log("req.body: ", req.body);
-
   const { body, ast } = req.body;
 
   const generateEmbedding = await pipeline(
@@ -25,8 +23,6 @@ export default async function handler(req: any, res: any) {
   });
 
   const embedding = Array.from(output.data);
-  
-  console.log("embedding to store: ", embedding);
 
   const { data, error } = await supabase
     .from('documents')

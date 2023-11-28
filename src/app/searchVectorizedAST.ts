@@ -28,9 +28,7 @@ export default async function searchVectorizedAST(ast: string): Promise<{
     match_threshold: 0.9, // Choose an appropriate threshold for your data
     match_count: 10, // Choose the number of matches
   })
-
-  console.log("closestMatch: ", documents);
-
+  
   return documents[0].content;
   
 };
