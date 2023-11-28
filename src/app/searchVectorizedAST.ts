@@ -6,7 +6,6 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-
 export default async function searchVectorizedAST(ast: string): Promise<void> {
   const generateEmbedding = await pipeline(
     "feature-extraction",
@@ -28,6 +27,7 @@ export default async function searchVectorizedAST(ast: string): Promise<void> {
     match_count: 10, // Choose the number of matches
   })
 
-  console.log("documents: ", documents);
+
+  console.log("closestMatch: ", documents);
   
 };
