@@ -75,7 +75,7 @@ export default function TreeSitterTest() {
 
       <div className="flex justify-center">
         <button
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+          className="bg-gradient-to-r from-purple-400 to-fuchsia-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2 drop-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.7)]"
           onClick={() => {
             if (AST?.rootNode) {
               storeVectorizedAST(code, AST.rootNode.toString());
@@ -87,7 +87,7 @@ export default function TreeSitterTest() {
       </div>
       <div className="flex justify-center">
         <button
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+          className="bg-gradient-to-r from-purple-400 to-fuchsia-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2 drop-shadow-[0_0_5px_rgba(255,255,255,0.7)] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.7)]"
           onClick={() => {
             if (AST?.rootNode) {
               searchVectorizedAST(AST.rootNode.toString()).then((res) => {
