@@ -23,6 +23,7 @@ export default function TreeSitterTest() {
   const [isReady, setIsReady] = React.useState(false);
   const [code, setCode] = React.useState(exampleCode);
   const [AST, setAST] = React.useState<Parser.Tree | null>(null);
+  const [searchResults, setSearchResults] = React.useState<any>([]);
 
   const parserRef = React.useRef<Parser>();
 
@@ -61,7 +62,7 @@ export default function TreeSitterTest() {
 
   return (
     <div>
-      <h1 className="p-2 text-4xl">Tree Sitter Test</h1>
+      <h1 className="p-2 text-4xl">Semantica</h1>
 
       <div className="flex-cole flex h-96 gap-1 p-1">
         <textarea
@@ -106,17 +107,25 @@ export default function TreeSitterTest() {
                 AST.rootNode.toString()
               );
               searchVectorizedAST(AST.rootNode.toString()).then((res) => {
-                // alert(`search result:  ${res.data[0].body}`);
-                // alert(res.data[0].body);
-                // console.log("result: ", res[0].content);
-                alert(res);
-              }
-              );
+                // alert(res);
+                setSearchResults(res);
+              });
             }
           }}
         >
           Semantic Code Search
         </button>
+      </div>
+
+      <div>
+        {searchResults.length > 0 && (
+          <div className="bg-gray-100 p-4 rounded-md">
+            <h2 className="text-lg font-medium text-gray-800">
+              Most Similar Match
+            </h2>
+            <p className="text-gray-700">{searchResults}</p>
+          </div>
+        )}
       </div>
     </div>
   );
