@@ -3,7 +3,16 @@ Wouldn't it be cool to use vector DBs to search for semantically (not synactical
 
 ___For real?___ 
 
-It's not a game changer or anything. This is just a fun experiment that I built to get familiarized with Tree-sitter and pgvector :) There's still a lot of room for improvement to achieve high accuracy.
+It's not a game changer or anything. This is just a fun experiment that I built to get familiarized with Tree-sitter and pgvector :) There's still a lot of room for improvement to achieve high accuracy. This is not productized, this was just an intellectual escapade. 
+
+## Instructions to run 
+1. Use node 18 and run npm install
+2. Go to your supabase dashboard and get the 2 environment variables that you need on your .env file. Thos are:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=YOUR_URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_API_KEY
+```
 
 ## Demo
 Semantica works with 2 very basic functionalities:
