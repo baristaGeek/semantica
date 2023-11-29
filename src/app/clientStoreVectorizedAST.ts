@@ -41,5 +41,5 @@ export default async function storeVectorizedAST(body: string, ast: string): Pro
     embedding,
   });
 
-  alert (`Vector stored!`);
+  alert (`Embedding stored!`);
 };
