@@ -1,3 +1,5 @@
+
+
 # Semantica: Semantic Code Search Using Vectorized Abstract Syntax Trees 
 Wouldn't it be cool to use vector DBs to search for semantically (not synactically) similar code in the public domain? 
 
@@ -13,6 +15,8 @@ It's not a game changer or anything. This is just a fun experiment that I built 
 NEXT_PUBLIC_SUPABASE_URL=YOUR_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_API_KEY
 ```
+
+3. Run `npm run dev`
 
 ## Demo
 Semantica works with 2 very basic functionalities:
